@@ -1,0 +1,86 @@
+:root {
+    --bg: #0f1724; --panel: #ffffff; --ink: #1c2434; --muted: #6b7587; --line: #e6e9f0;
+    --brand: #4f46e5; --brand-d: #4338ca; --ok: #15803d; --err: #b91c1c;
+    --c0: #4f46e5; --c1: #0891b2; --c2: #16a34a; --c3: #d97706; --c4: #db2777;
+}
+* { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+body { margin: 0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; color: var(--ink); background: #f3f5f9; }
+.topbar { background: linear-gradient(135deg, #111a2e, #26335b); color: #fff; padding: 18px 28px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.topbar .logo { width: 38px; height: 38px; border-radius: 10px; background: var(--brand); display: grid; place-items: center; font-size: 20px; }
+.topbar h1 { margin: 0; font-size: 19px; font-weight: 650; }
+.topbar p { margin: 2px 0 0; font-size: 12.5px; color: #aab4cf; }
+.rules { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { font-size: 11.5px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.12); color: #dfe5f5; }
+main { max-width: 1400px; margin: 0 auto; padding: 20px 28px 40px; }
+
+.toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.toolbar .spacer { flex: 1; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 6px 18px rgba(16,24,40,.05); }
+label { display: flex; flex-direction: column; gap: 5px; font-size: 12px; font-weight: 600; color: var(--muted); }
+input, select { font: inherit; font-size: 14px; font-weight: 400; color: var(--ink); padding: 9px 11px; border: 1px solid #d5dae5; border-radius: 9px; background: #fff; outline: none; }
+input:focus, select:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(79,70,229,.15); }
+button { font: inherit; cursor: pointer; }
+.btn { padding: 9px 14px; border-radius: 9px; border: 1px solid #d5dae5; background: #fff; font-size: 13.5px; font-weight: 550; color: var(--ink); }
+.btn:hover { background: #f4f6fb; }
+.btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+.btn.primary:hover { background: var(--brand-d); }
+.btn.icon { padding: 9px 12px; }
+.tzlabel { font-size: 12.5px; color: var(--muted); }
+
+.toast { padding: 11px 14px; border-radius: 10px; font-size: 13.5px; margin-bottom: 14px; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+.toast.err { background: #fef2f2; color: var(--err); border: 1px solid #fecaca; }
+.toast.ok { background: #f0fdf4; color: var(--ok); border: 1px solid #bbf7d0; }
+.toast button { background: none; border: 0; font-size: 18px; color: inherit; line-height: 1; }
+
+.layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 980px) { .layout { grid-template-columns: minmax(0, 1fr); } .form { position: static; } }
+.form { padding: 20px; display: flex; flex-direction: column; gap: 14px; position: sticky; top: 16px; }
+.form h2 { margin: 0; font-size: 16px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.dur { font-size: 12px; color: var(--muted); margin-top: -6px; }
+.dur.bad { color: var(--err); font-weight: 600; }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+
+.grid-card { overflow: hidden; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); align-items: center; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.legend .hatch { background: repeating-linear-gradient(45deg, #e2e5ec, #e2e5ec 3px, #cfd4de 3px, #cfd4de 6px); }
+.grid-wrap { overflow: auto; max-height: 72vh; }
+table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 12.5px; }
+thead th { position: sticky; top: 0; z-index: 3; background: #f8f9fc; border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; min-width: 150px; }
+thead th small { display: block; font-weight: 400; color: var(--muted); margin-top: 2px; }
+thead th.corner { min-width: 64px; left: 0; z-index: 4; text-align: right; color: var(--muted); font-weight: 500; }
+thead th .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+td { height: 26px; padding: 0 8px; border-bottom: 1px solid #f0f2f7; border-left: 1px solid #f0f2f7; }
+tr.hour td { border-top: 1px solid var(--line); }
+td.time { position: sticky; left: 0; z-index: 2; background: #f8f9fc; color: var(--muted); text-align: right; width: 64px; border-left: 0; font-variant-numeric: tabular-nums; }
+td.free { cursor: pointer; }
+td.free:hover { background: #eef2ff; }
+td.maint { background: repeating-linear-gradient(45deg, #f1f2f6, #f1f2f6 6px, #e6e8ef 6px, #e6e8ef 12px); color: #8a92a5; font-size: 11px; cursor: not-allowed; }
+td.booked { color: #fff; border-bottom-color: rgba(255,255,255,.25); }
+td.booked.first { border-top-left-radius: 8px; border-top-right-radius: 8px; font-weight: 600; }
+td.booked.last { border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+td.booked .sub { font-weight: 400; opacity: .85; margin-left: 6px; }
+td.booked button { float: right; background: rgba(255,255,255,.22); border: 0; color: #fff; border-radius: 6px; padding: 1px 8px; font-size: 11px; }
+td.booked button:hover { background: rgba(255,255,255,.4); }
+.empty { padding: 28px; text-align: center; color: var(--muted); }
+
+.layout > * { min-width: 0; }
+@media (max-width: 640px) {
+    .topbar { padding: 14px 16px; }
+    .topbar h1 { font-size: 17px; }
+    .rules { margin-left: 0; }
+    main { padding: 14px 12px 32px; }
+    .toolbar { gap: 8px; }
+    .toolbar input[type=date] { flex: 1; min-width: 0; }
+    .toolbar .spacer { display: none; }
+    .toolbar select { flex: 1 1 100%; min-width: 0; }
+    .tzlabel { display: none; }
+    .form { padding: 16px; }
+    .grid-wrap { max-height: 65vh; }
+    thead th { min-width: 130px; padding: 8px 6px; }
+    thead th.corner, td.time { min-width: 52px; width: 52px; padding: 0 6px; }
+    td { height: 30px; padding: 0 6px; }
+    td.booked .sub { display: none; }
+}

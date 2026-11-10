@@ -1,0 +1,15 @@
+services:
+  mongo:
+    image: mongo:7
+    volumes: [mongodata:/data/db]
+  app:
+    build: .
+    ports: ["8000:8000"]
+    depends_on: [mongo]
+    environment:
+      APP_KEY: ${APP_KEY:?generate with: php artisan key:generate --show}
+      APP_URL: http://localhost:8000
+      MONGODB_URI: mongodb://mongo:27017
+      MONGODB_DATABASE: sandbox_booking
+volumes:
+  mongodata:
